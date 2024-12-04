@@ -1,0 +1,312 @@
+/* ใช้ฟอนต์สไตล์ 8-bit */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* พื้นหลังเกม 8-bit */
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-image: url('https://i.ibb.co/VBQNmTx/1999dd9861492832f4823d0e410f0ff7.gif');
+    background-repeat: repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.game-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.game-title {
+  font-size: 2.5rem; /* ขยายขนาดของชื่อเกม */
+  color: #ffc107; /* สีเหลือง */
+  text-shadow: 3px 3px #000; /* เพิ่มเงา */
+  margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+
+.account-info {
+    font-size: 0.8rem;
+    color: #eee;
+}
+
+.status-bars {
+    margin: 20px 0;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 20px;
+    background-color: #333;
+    border: 3px solid #000;
+    box-shadow: 3px 3px 0 #000;
+    margin: 5px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.game-button, .connect-button {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #fc0707;
+    color: #fff;
+    border: 3px solid #000;
+    border-radius: 0;
+    box-shadow: 3px 3px 0 #000;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.game-button:hover, .connect-button:hover {
+    transform: translate(-2px, -2px);
+}
+
+.game-button:disabled {
+    background-color: #777;
+    color: #444;
+    cursor: not-allowed;
+}
+
+.claim-button {
+    background-color: #28a745;
+}
+
+.claim-button:hover:enabled {
+    background-color: #218838;
+}
+
+.connect-button {
+  display: block; /* ทำให้ปุ่มเป็นบล็อกเต็ม */
+  width: 400px; /* กำหนดความกว้างให้ใหญ่ขึ้น */
+  height: 80px; /* กำหนดความสูง */
+  margin: 20px auto; /* จัดให้อยู่ตรงกลางจอ */
+  font-size: 1.1rem; /* ขยายขนาดข้อความ */
+  background-color: #ff4500; /* สีพื้นหลัง */
+  color: #fff; /* สีข้อความ */
+  border: 5px solid #000; /* เส้นขอบหนา */
+  border-radius: 10px; /* มุมโค้ง */
+  box-shadow: 5px 5px 0 #000; /* เงา */
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.connect-button:hover {
+  transform: translate(-5px, -5px); /* ขยับเล็กน้อยเมื่อ hover */
+  background-color: #e63e00; /* สีเมื่อ hover */
+}
+
+.connect-container {
+  display: flex;
+  flex-direction: column; /* จัดเรียงแนวตั้ง */
+  justify-content: center; /* จัดให้อยู่กลางแนวตั้ง */
+  align-items: center; /* จัดให้อยู่กลางแนวนอน */
+  height: 100vh; /* ใช้ความสูงเต็มจอ */
+  text-align: center;
+}
+
+
+.character-container {
+  margin-bottom: 20px;
+}
+
+.character-image {
+  width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 3px solid #000;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.leaderboard {
+  position: fixed;
+  top: 150px; /* ระยะห่างจากด้านบน */
+  right: 50px; /* ชิดขอบขวาของจอ */
+  background-color: rgba(0, 0, 0, 0.8); /* เพิ่มพื้นหลังโปร่งใส */
+  color: #fff;
+  padding: 15px;
+  border: 2px solid #ffffff;
+  border-radius: 8px; /* เพิ่มมุมโค้ง */
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  z-index: 1000;
+  text-shadow: 1px 1px #000;
+  max-width: 500px; /* ขยายความกว้างเล็กน้อย */
+  max-height: 400px; /* จำกัดความสูง */
+  overflow-y: auto; /* เพิ่ม scroll หากมีข้อมูลเยอะ */
+}
+
+.leaderboard h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.leaderboard ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  max-height: 350px; /* จำกัดความสูงภายใน */
+}
+
+.leaderboard li {
+  margin-bottom: 5px;
+  color: #fff;
+  text-shadow: 1px 1px #000;
+}
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  padding: 20px;
+  background-color: #fff;
+  border: 3px solid #000;
+  text-align: center;
+  box-shadow: 5px 5px 0px #000;
+  font-family: 'Press Start 2P', cursive;
+  color: #000;
+}
+
+.coin-wallet {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;
+  z-index: 1000;
+  text-shadow: 1px 1px #000;
+}
+
+.status-container {
+    position: fixed;
+    bottom:135px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7); /* เพิ่มพื้นหลังโปร่งใส */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    width: 90%; /* ให้กินพื้นที่ 90% ของจอ */
+    max-width: 500px; /* จำกัดขนาดสูงสุด */
+}
+
+.character-container {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 500;
+}
+
+.character-image {
+  width: 500px;
+  height: auto; 
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  opacity: 1; /* ตั้งความทึบเต็ม */
+  
+}
+
+.claim-button {
+  background-color: #007bff;
+}
+
+.claim-button:hover:enabled {
+  background-color: #0056b3;
+}
+
+.claim-button:disabled {
+  background-color: #777;
+  color: #444;
+  cursor: not-allowed;
+}
+
+
+.nft-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.nft-container {
+  position: fixed;
+  top: 50px; /* ระยะห่างจากด้านบนจอ */
+  left: 10px; /* ตรงกับ Coin Wallet */
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.5rem;
+  z-index: 1000;
+  text-shadow: 1px 1px #000;
+  max-width: 200px; /* จำกัดขนาดความกว้าง */
+  overflow-y: auto; /* เพิ่ม scroll หากรายการยาว */
+  max-height: 300px; /* จำกัดความสูง */
+}
+
+.nft-item {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.nft-item img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.popup-content.success {
+  background-color: #28a745; /* สีเขียวสำหรับ Success */
+  color: #fff;
+}
+
+.popup-content.error {
+  background-color: #dc3545; /* สีแดงสำหรับ Error */
+  color: #fff;
+}
